@@ -1,3 +1,5 @@
 opencv-python-headless
 requests
 ultralytics
+langflow
+streamlit
