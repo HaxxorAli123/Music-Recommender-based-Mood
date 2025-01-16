@@ -13,7 +13,7 @@ from ultralytics import YOLOWorld
 # Constants
 BASE_API_URL = "http://127.0.0.1:7860"
 FLOW_ID = "1ed1584c-f09f-4768-b20f-c5f851190ce7"
-ENDPOINT = "" # You can set a specific endpoint name in the flow settings
+ENDPOINT = "music_recommender" # You can set a specific endpoint name in the flow settings
 
 TWEAKS = {
   "ChatInput-VPUMd": {},
