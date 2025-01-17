@@ -83,12 +83,27 @@ def main():
     st.title("Music Recommender Chatbot")
     st.write("Please capture an image first before you start asking a question.")
 
-    picture = st.camera_input("Take a picture")
-    json_full = []
+    # Initialize session state for images and chat
+    if "images" not in st.session_state:
+        st.session_state.images = []
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
+    # Sidebar to display all captured images
+    with st.sidebar:
+        st.header("Captured Images")
+        if st.session_state.images:
+            for img in st.session_state.images:
+                st.image(img, use_column_width=True, caption="Captured Image")
+        else:
+            st.write("No images captured yet.")
+
+    # Capture a new image
+    picture = st.camera_input("Take a picture")
     if picture is not None:
         # Convert the uploaded file to an image
         image = Image.open(picture).convert("RGB")
+        st.session_state.images.append(image)  # Save image to session state
         st.image(image, caption="Uploaded Image", use_container_width=True)
 
         # Convert the image to a format compatible with YOLO (numpy array)
@@ -104,8 +119,6 @@ def main():
         detection_image = results[0].plot()
         detection_image_rgb = cv2.cvtColor(detection_image, cv2.COLOR_BGR2RGB)
 
-        json_full = results[0].to_json()
-
         # Show the detection results on the original image
         st.image(detection_image_rgb, caption="Detection Results", use_container_width=True)
 
@@ -119,23 +132,20 @@ def main():
                 class_name = best_mood_recognition_model.names[class_id]  # Class name
 
                 detected_classes.append(class_name)
-                print(f"Detected: {class_name} with confidence: {confidence:.2f}")
 
         # Prepare the tweaks for Langflow
-        TWEAKS["Prompt-mTB7X"]["camera"] = json_full
-
-        # Send the detected emotions to Langflow and get a response
         detected_emotions = ", ".join(detected_classes)
         query = f"Based on the detected emotions: {detected_emotions}, what songs do you recommend?"
         assistant_response = extract_message(run_flow(query, tweaks=TWEAKS))
 
-        # Display the assistant's response
-        st.subheader("Assistant Response")
-        st.write(assistant_response)
-
-    # Initialize session state for chat history
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
+        # Add the assistant's response to chat history
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": assistant_response,
+                "avatar": "🤖",  # Emoji for assistant
+            }
+        )
 
     # Display previous messages with avatars
     for message in st.session_state.messages:
