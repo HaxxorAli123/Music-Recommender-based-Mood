@@ -9,7 +9,7 @@ from typing import Optional
 from ultralytics import YOLO
 
 # Constants
-BASE_API_URL = "https://db24-175-139-159-165"
+BASE_API_URL = "https://db24-175-139-159-165.ngrok"
 FLOW_ID = "1ed1584c-f09f-4768-b20f-c5f851190ce7"
 ENDPOINT = ""  # You can set a specific endpoint name in the flow settings
 
