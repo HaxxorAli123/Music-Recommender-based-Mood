@@ -44,7 +44,7 @@ The Music Recommender Chatbot combines **Computer Vision** and **Large Language 
    ```
 3. **Run the Application** (local use):
    ```bash
-   streamlit run app.py
+   streamlit run new01.py (new.py is previous version)
    ```
 4. **Ngrok Setup** (for remote use):
    - Start an Ngrok tunnel:
