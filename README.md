@@ -83,5 +83,8 @@ The Music Recommender Chatbot combines **Computer Vision** and **Large Language 
 - **Chatbot Integration**: Langflow.
 - **Frontend**: Streamlit.
 
+## Note 
+The project need Langflow to run ie music_recommender_bot.json imported on langflow. (search guide online for online use) and ngrok for the project to work.
+
 
 
