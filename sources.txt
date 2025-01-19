@@ -1,0 +1,4 @@
+
+face detection dataset source -https://universe.roboflow.com/mooddetection/mood-detection
+
+credit - https://www.kaggle.com/datasets/abhisheksingh016/machine-model-for-emotion-detection
