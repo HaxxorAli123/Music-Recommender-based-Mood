@@ -82,9 +82,13 @@ The Music Recommender Chatbot combines **Computer Vision** and **Large Language 
 - **Emotion Detection Model**: YOLO-based.
 - **Chatbot Integration**: Langflow.
 - **Frontend**: Streamlit.
+- **Roboflow**: in source.txt file for the datasets on face annotation and emotions
 
 ## Note 
-The project need Langflow to run ie music_recommender_bot.json imported on langflow. (search guide online for online use) and ngrok for the project to work.
+1. The project need Langflow to run ie music_recommender_bot.json imported on langflow. (search guide online for online use) and ngrok for the project to work.
+2. The project has very little emotion detection due to personal computing limitation. Future coders, Make it greater than this project.
+
+
 
 
 
