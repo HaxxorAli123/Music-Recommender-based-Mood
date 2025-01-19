@@ -42,11 +42,11 @@ The Music Recommender Chatbot combines **Computer Vision** and **Large Language 
    ```bash
    pip install -r requirements.txt
    ```
-3. **Run the Application**:
+3. **Run the Application** (local use):
    ```bash
    streamlit run app.py
    ```
-4. **Ngrok Setup**:
+4. **Ngrok Setup** (for remote use):
    - Start an Ngrok tunnel:
      ```bash
      ngrok http 8501
